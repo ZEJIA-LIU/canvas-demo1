@@ -147,6 +147,8 @@ eraser.addEventListener('click', () => {
 
 let lastX
 let lastY
+
+//兼容移动端
 let DownOrStart = ('ontouchstart' in window) ? 'touchstart' : 'mousedown'
 let MouseOrTouch = ('ontouchmove' in window) ? 'touchmove' : 'mousemove'
 let UpOrEnd = ('ontouchend' in window) ? 'touchend' : 'mouseup'
@@ -172,7 +174,13 @@ canvas.addEventListener(DownOrStart, (e) => {
         ctx.clearRect(X - 10, Y - 61, 20, 20)
     }
 })
+let ClickSave = ('ontouchmove' in window) ? true : false
+let H
 canvas.addEventListener(MouseOrTouch, (e) => {
+    if (ClickSave === true) {
+        H = false
+    }
+
     if (drawing2) {
         X = e.clientX || e.targetTouches[0].clientX
         Y = e.clientY || e.targetTouches[0].clientY
@@ -189,30 +197,18 @@ canvas.addEventListener(MouseOrTouch, (e) => {
         $eraser.style.top = Y - 58 + 'px'
         ctx.clearRect(X - 10, Y - 61, 20, 20)
     }
+})
 
-})
-canvas.addEventListener(UpOrEnd, (e) => {
-    drawing2 = false
-    $eraser.style.display = 'none'
-    if (restore.length > 0) {
-        redo.style.color = 'black'
-    }
-    setTimeout(() => {
-        restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    })
-})
 $eraser.addEventListener(UpOrEnd, (e) => {
     rubber2 = false
     $eraser.style.display = 'none'
     if (restore.length > 0) {
         redo.style.color = 'black'
     }
-    setTimeout(() => {
-        restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    })
 })
 
 canvas.addEventListener('click', (e) => {
+    console.log(ClickSave)
     if (drawing1) {
         let X = e.clientX || e.targetTouches[0].clientX
         let Y = e.clientY || e.targetTouches[0].clientY
@@ -220,9 +216,33 @@ canvas.addEventListener('click', (e) => {
         ctx.arc(X, Y - 50, t, 0, 2 * Math.PI)
         ctx.fill()
     }
-
+    if (ClickSave === true) {
+        setTimeout(() => {
+            restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        })
+    }
 })
 
+
+canvas.addEventListener(UpOrEnd, (e) => {
+    drawing2 = false
+    $eraser.style.display = 'none'
+    if (restore.length > 0) {
+        redo.style.color = 'black'
+    }
+    if (ClickSave === false) {
+        setTimeout(() => {
+            restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        })
+    }
+    if (ClickSave === true && H === false) {
+        setTimeout(() => {
+            restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+            H = true
+        })
+    }
+}
+)
 
 //撤回
 redo.addEventListener('click', (e) => {
