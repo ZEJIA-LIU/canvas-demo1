@@ -15,7 +15,7 @@ let t = 1.5
 function preventBehavior(e) {
     e.preventDefault();
 };
-document.addEventListener("touchmove", preventBehavior,{passive:false}, false);
+document.addEventListener("touchmove", preventBehavior, { passive: false }, false);
 //画线
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath()
@@ -134,6 +134,7 @@ pen.addEventListener('click', () => {
     eraser.classList.remove('active2')
     drawing1 = true
     rubber1 = false
+    rubber2 = false
 })
 //橡皮
 let eraser = document.querySelector('#eraser')
@@ -222,15 +223,7 @@ canvas.addEventListener('click', (e) => {
 
 })
 
-function compareImages(img1, img2) {
-    if (img1.data.length != img2.data.length)
-        return false
-    for (var i = 0; i < img1.data.length; i = i + 1) {
-        if (img1.data[i] != img2.data[i])
-            return false
-    }
-    return true
-}
+
 //撤回
 redo.addEventListener('click', (e) => {
     if (restore.length > 1) {
