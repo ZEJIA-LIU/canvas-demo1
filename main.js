@@ -204,6 +204,16 @@ $eraser.addEventListener(UpOrEnd, (e) => {
     $eraser.style.display = 'none'
     if (restore.length > 0) {
         redo.style.color = 'black'
+    } if (ClickSave === false) {
+        setTimeout(() => {
+            restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        })
+    }
+    if (ClickSave === true && H === false) {
+        setTimeout(() => {
+            restore[restore.length] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+            H = true
+        })
     }
 })
 
