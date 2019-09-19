@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自制小画板</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="//at.alicdn.com/t/font_1421764_uqzewegi62h.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <svg class="icon active2" id="pen" aria-hidden="true">
+                <use xlink:href="#icon-bi"></use>
+            </svg>
+            <svg class="icon" id="eraser" aria-hidden="true">
+                <use xlink:href="#icon-xiangpi"></use>
+            </svg>
+            <svg class="icon" id="redo" aria-hidden="true">
+                <use xlink:href="#icon-chehui"></use>
+            </svg>
+            <svg class="icon" id="clear" aria-hidden="true">
+                <use xlink:href="#icon-delete"></use>
+            </svg>
+            <svg class="icon" id="save" aria-hidden="true">
+                <use xlink:href="#icon-baocun"></use>
+            </svg>
+
+            <select name="lineWidth" id="lineWidth">
+
+                <option value="0">--线宽--</option>
+                <option value="1">3px</option>
+                <option value="2">5px</option>
+                <option value="3">7px</option>
+                <option value="4">10px</option>
+            </select>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <canvas id="canvas"></canvas></div>
+    <div id="color-preview" class="clearfix">
+        <div class="color-child active" id="black"></div>
+        <div class="color-child" id="yellow"></div>
+        <div class="color-child" id="red"></div>
+        <div class="color-child" id="pink"></div>
+        <div class="color-child" id="green"></div>
+        <div class="color-child" id="blue"></div>
+        <div class="color-child" id="grey"></div>
+        <div class="color-child" id="brown"></div>
+    </div>
+    <div id="color-right">
+        <svg class="icon" id="button" aria-hidden="true" class="button-active">
+            <use xlink:href="#icon-jiantou-copy"></use>
+        </svg>
+        <div id="eraser-wrapper"></div>
+
+        <script src="./main.js"></script>
+</body>
+
+</html>
