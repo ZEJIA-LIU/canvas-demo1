@@ -48,82 +48,41 @@ $button.addEventListener('click', (e) => {
 })
 //选色
 function color(x1, x2, x3, x4, x5, x6, x7, x8) {
-    x1.classList.add('active')
-    x2.classList.remove('active')
-    x3.classList.remove('active')
-    x4.classList.remove('active')
-    x5.classList.remove('active')
-    x6.classList.remove('active')
-    x7.classList.remove('active')
-    x8.classList.remove('active')
+    $(`#${x1}`).addClass('active')
+    $(`#${x2}`).removeClass('active')
+    $(`#${x3}`).removeClass('active')
+    $(`#${x4}`).removeClass('active')
+    $(`#${x5}`).removeClass('active')
+    $(`#${x6}`).removeClass('active')
+    $(`#${x7}`).removeClass('active')
+    $(`#${x8}`).removeClass('active')
 }
-black.addEventListener('click', () => {
-    color(black, red, yellow, pink, green, blue, grey, brown)
-    ctx.strokeStyle = 'black'
-    ctx.fillStyle = 'black'
+let colorArray = ['black', 'red', 'yellow', 'pink', 'green', 'blue', 'grey', 'brown']
+colorArray.forEach((newColor, i) => {
+    $(`#${newColor}`).on('click',()=>{
+        let newArray=colorArray.slice(0)
+        newArray.splice(i,1)
+        color(newColor,newArray[0],newArray[1],newArray[2],newArray[3],newArray[4],newArray[5],newArray[6])
+        ctx.strokeStyle = newColor
+        ctx.fillStyle = newColor
+    })
 })
 
-red.addEventListener('click', () => {
-    color(red, black, yellow, pink, green, blue, grey, brown)
-    ctx.strokeStyle = 'red'
-    ctx.fillStyle = 'red'
-
-})
-yellow.addEventListener('click', () => {
-    color(yellow, red, black, pink, green, blue, grey, brown)
-    ctx.strokeStyle = 'yellow'
-    ctx.fillStyle = 'yellow'
-
-})
-pink.addEventListener('click', () => {
-    color(pink, yellow, red, black, green, blue, grey, brown)
-    ctx.strokeStyle = 'pink'
-    ctx.fillStyle = 'pink'
-
-})
-green.addEventListener('click', () => {
-    color(green, pink, yellow, red, black, blue, grey, brown)
-    ctx.strokeStyle = 'green'
-    ctx.fillStyle = 'green'
-
-})
-blue.addEventListener('click', () => {
-    color(blue, green, pink, yellow, red, black, grey, brown)
-    ctx.strokeStyle = 'blue'
-    ctx.fillStyle = 'blue'
-
-})
-grey.addEventListener('click', () => {
-    color(grey, blue, green, pink, yellow, red, black, brown)
-    ctx.strokeStyle = 'grey'
-    ctx.fillStyle = 'grey'
-
-})
-brown.addEventListener('click', () => {
-    color(brown, grey, blue, green, pink, yellow, red, black)
-    ctx.strokeStyle = 'brown'
-    ctx.fillStyle = 'brown'
-
-})
 
 //线宽
+const lineWidthMap=[
+    {value:'1',lineWidth:'3',t:2},
+    {value:'2',lineWidth:'5',t:2.5},
+    {value:'3',lineWidth:'7',t:3.5},
+    {value:'4',lineWidth:'10',t:5}
+]
 lineWidth.addEventListener('input', (e) => {
-    if (e.target.value === '1') {
-        ctx.lineWidth = '3'
-        t = 1.5
-    }
-    if (e.target.value === '2') {
-        ctx.lineWidth = '5'
-        t = 2.5
-    }
-    if (e.target.value === '3') {
-        ctx.lineWidth = '7'
-        t = 3.5
-    }
-    if (e.target.value === '4') {
-        ctx.lineWidth = '10'
-        t = 5
-    }
+    for(let i=0;i<lineWidthMap.length;i++){
+       if(e.target.value===lineWidthMap[i].value){
+           ctx.lineWidth=lineWidthMap[i].lineWidth
+           t=lineWidthMap[i].t
+       }
+    }  
 })
 
 
@@ -218,7 +177,6 @@ $eraser.addEventListener(UpOrEnd, (e) => {
 })
 
 canvas.addEventListener('click', (e) => {
-    console.log(ClickSave)
     if (drawing1) {
         let X = e.clientX || e.targetTouches[0].clientX
         let Y = e.clientY || e.targetTouches[0].clientY
@@ -232,7 +190,6 @@ canvas.addEventListener('click', (e) => {
         })
     }
 })
-
 
 canvas.addEventListener(UpOrEnd, (e) => {
     drawing2 = false

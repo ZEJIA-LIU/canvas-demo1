@@ -1,0 +1,159 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 45px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 10px #545454;
+}
+
+nav{
+    display: flex;
+    height: 45px;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+}
+.icon {
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  .wrapper {
+    display: block;
+    position: fixed;
+    left:0; top:0;
+}
+  #pen{
+      width: 30px;
+      height: 30px;
+  }
+  #eraser{
+      width: 35px;
+      height: 33px;
+  }
+  #redo{
+      height: 30px;
+      width: 30px;
+      color: grey;
+  }
+  #clear{
+      height: 42px;
+      width: 42px;
+  }
+  #save{
+      height: 28px;
+      width: 28px;
+  }
+#lineWidth{
+    height: 20px;
+}
+
+#canvas{
+  position: absolute;
+  top: 50px;
+    display: inline-block;
+    border: 1xp red solid;
+    
+}
+.clearfix{
+    display: block;
+    clear: both;
+    content:'';
+}
+#color-preview{
+    height: 200px;
+    width: 100px;
+
+display: block;
+position: absolute;
+top: 47px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-items: center;
+border-top-left-radius:20% 10%;
+border-bottom-left-radius:20% 10%;
+background: #eeeeee
+}
+#color-right{
+height: 200px;
+ width: 20px;
+display: block;
+position: absolute;
+top:47px;
+left: 100px;
+border-top-right-radius:100% 10%;
+border-bottom-right-radius:100% 10%;
+
+background: #eeeeee;
+display:flex;
+align-items: center;
+}
+.color-child{
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    border: 1px black solid;
+    border-radius: 50%;
+}
+#button{
+   position: absolute;height: 30px;width: 30px;
+    left: -6px;
+}
+#black{
+    background: black;
+    
+}
+#yellow{
+    background: yellow;
+}
+#red{
+    background: red;
+}
+#pink{
+    background: pink;
+}
+#green{
+    background: green
+}
+#blue{
+    background: blue;
+}
+#gray{
+    background: gray;
+}
+#brown{
+    background: brown;
+}
+.active{
+    transform: scale(1.2);
+    border-width: 2px;
+    box-shadow: 0px 0px 5px #333333;
+}
+.active2{
+    transform:scale(1.2);
+    
+}
+#eraser-wrapper{
+    border:1px black solid;
+    position: absolute;
+    left: 0px;
+    width: 0px;
+    height:20px;
+    width: 20px;
+    display: none;
+}
+
+/*# sourceMappingURL=style.a3aa39db.css.map */
